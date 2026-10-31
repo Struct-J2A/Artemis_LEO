@@ -1,0 +1,1 @@
+//Funciones especiales de negocio
