@@ -18,6 +18,6 @@ compilacion en WINDOWS:
 gcc src/main.c src/artemis.c src/intro_outro.c -o bin/win/executor.exe ; ./bin/win/executor.exe
 
 compilacion en MAC:
-
+clang src/main.c src/artemis.c src/intro_outro.c -o bin/mac/executor -lm && ./bin/mac/executor
 
 */
