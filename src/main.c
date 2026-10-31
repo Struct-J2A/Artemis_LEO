@@ -10,4 +10,13 @@ int main(){
     return 0;
 }
 
-//compilar en linux: gcc main.c -o main ./bin/lin
+/*
+compilacion en LINUX:
+gcc src/main.c src/artemis.c src/intro_outro.c -o bin/lin/executor ; ./bin/lin/executor
+
+compilacion en WINDOWS:
+
+compilacion en MAC:
+
+
+*/
