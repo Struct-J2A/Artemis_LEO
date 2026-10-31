@@ -15,6 +15,7 @@ compilacion en LINUX:
 gcc src/main.c src/artemis.c src/intro_outro.c -o bin/lin/executor ; ./bin/lin/executor
 
 compilacion en WINDOWS:
+gcc src/main.c src/artemis.c src/intro_outro.c -o bin/win/executor.exe ; ./bin/win/executor.exe
 
 compilacion en MAC:
 
