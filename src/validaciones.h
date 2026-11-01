@@ -1,3 +1,5 @@
+/*Prototipos de las funciones de validación.*/
+
 #ifndef VALIDACIONES_H
 #define VALIDACIONES_H
 

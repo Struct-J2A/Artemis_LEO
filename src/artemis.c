@@ -1,1 +1,1 @@
-//Funciones especiales de negocio
+//Lógica y algoritmos del "simulador".

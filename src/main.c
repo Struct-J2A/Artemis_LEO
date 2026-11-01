@@ -1,3 +1,5 @@
+/*Menú principal y flujo general.*/
+
 #include <stdio.h>
 #include <stdlib.h>
 

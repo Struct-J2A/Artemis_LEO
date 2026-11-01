@@ -1,1 +1,1 @@
-//ambiente de programa
+//Estructuras, constantes y prototipos públicos.

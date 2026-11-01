@@ -1,3 +1,5 @@
+/*Lectura segura y validación de datos.*/
+
 #include <stdio.h>
 #include "validaciones.h"
 
