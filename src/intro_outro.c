@@ -12,15 +12,6 @@
     #define SLEEP_MS(ms) usleep((ms) * 1000)
 #endif
 
-// Función auxiliar para limpiar pantalla
-static void limpiar_pantalla(void) {
-#ifdef _WIN32
-    system("cls");
-#else
-    system("clear");
-#endif
-}
-
 // Logo 1: La araña de la UTN
 static void logo_utn_arania(void) {
     limpiar_pantalla();
@@ -40,7 +31,7 @@ static void logo_utn_arania(void) {
     printf("\n          >> PRESIONA ENTER PARA INGRESAR <<          \n");
 }
 
-// Logo 2: UTN FRRE en ASCII
+// Logo 2: UTN FRRE
 static void logo_utn_nombre(void) {
     limpiar_pantalla();
     printf("  ██==============================================██  \n");
