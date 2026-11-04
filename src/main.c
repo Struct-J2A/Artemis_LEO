@@ -12,7 +12,11 @@ int main(){
     return 0;
 }
 
+
+
 /*
+
+Guia de compilación para cada computadora de cada integrante del equipo:
 compilacion en LINUX:
 gcc src/main.c src/artemis.c src/intro_outro.c -o bin/lin/executor ; ./bin/lin/executor
 
