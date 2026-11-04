@@ -106,7 +106,7 @@ void mostrar_outro(void) {
     printf("\n");
     printf("  ===============================================================\n");
     printf("   [+] Maniobra completada. Cerrando telemetria de la Orion...\n");
-    printf("   [+] Gracias por utilizar el Simulador Artemis II (Escenario 2).\n");
+    printf("   [+] Gracias por utilizar el Simulador Artemis II \n");
     printf("   [+] ¡Hasta la proxima mision!\n");
     printf("  ===============================================================\n\n");
 }
