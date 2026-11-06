@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "funcion_global.h"
+#include "intro_outro.h"  
 
 // Manejo de retardos y detección de teclas según el sistema operativo
 #ifdef _WIN32
