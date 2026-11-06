@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "funcion_global.h"
-#include "intro_outro.h"  
+#include "intro_outro.h"
 
 // Manejo de retardos y detección de teclas según el sistema operativo
 #ifdef _WIN32
@@ -14,41 +14,39 @@
     #define SLEEP_MS(ms) usleep((ms) * 1000)
 #endif
 
-// Logo 1: La araña de la UTN
+// Logo 1: La araña de la UTN en ASCII estándar
 static void logo_utn_arania(void) {
-    limpiar_pantalla();
-    printf("  ██==============================================██  \n");
-    printf("  ||░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░||  \n");
-    printf("  ||░░░░░░░░░░░░░░░░▄░░░░░▄▄░░░░░▄░░░░░░░░░░░░░░░░||  \n");
-    printf("  ||░░░░░░░░░░░░░░░░▀█░░░░██░░░░█▀░░░░░░░░░░░░░░░░||  \n");
-    printf("  ||░░░░░░░░░░░░░░░░░▀█▄▄░██░▄▄█▀░░░░░░░░░░░░░░░░░||  \n");
-    printf("  ||░░░░░░░░░░░░░░░░░░░░█▄██▄█░░░░░░░░░░░░░░░░░░░░||  \n");
-    printf("  ||░░░░░░░░░░░░░░░░██████████████░░░░░░░░░░░░░░░░||  \n");
-    printf("  ||░░░░░░░░░░░░░░░░░░░░█▀██▀█░░░░░░░░░░░░░░░░░░░░||  \n");
-    printf("  ||░░░░░░░░░░░░░░░░░▄█▀▀░██░▀▀█▄░░░░░░░░░░░░░░░░░||  \n");
-    printf("  ||░░░░░░░░░░░░░░░░▄█░░░░██░░░░█▄░░░░░░░░░░░░░░░░||  \n");
-    printf("  ||░░░░░░░░░░░░░░░░▀░░░░░▀▀░░░░░▀░░░░░░░░░░░░░░░░||  \n");
-    printf("  ||░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░||  \n");
-    printf("  ██==============================================██  \n");
+    limpiarPantalla();
+    printf("  +===============================================+\n");
+    printf("  |                                               |\n");
+    printf("  |                .     ..     .                 |\n");
+    printf("  |                -#    ##    #-                 |\n");
+    printf("  |                 -##  ##  ##-                  |\n");
+    printf("  |                    ####                       |\n");
+    printf("  |              ################                 |\n");
+    printf("  |                    ####                       |\n");
+    printf("  |                 .##  ##  ##.                  |\n");
+    printf("  |                .#    ##    #.                 |\n");
+    printf("  |                '     ''     '                 |\n");
+    printf("  |                                               |\n");
+    printf("  +===============================================+\n");
     printf("\n          >> PRESIONA ENTER PARA INGRESAR <<          \n");
 }
 
-// Logo 2: UTN FRRE
+// Logo 2: UTN FRRE en ASCII estándar
 static void logo_utn_nombre(void) {
-    limpiar_pantalla();
-    printf("  ██==============================================██  \n");
-    printf("  ||░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░||  \n");
-    printf("  ||░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░||  \n");
-    printf("  ||░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░||  \n");
-    printf("  ||░░░░░╔╗░╔╦════╦═╗░╔╗░░░░╔═══╦═══╦═══╦═══╗░░░░░||  \n");
-    printf("  ||░░░░░║║░║║╔╗╔╗║║╚╗║║░░░░║╔══╣╔═╗║╔═╗║╔══╝░░░░░||  \n");
-    printf("  ||░░░░░║║░║╠╝║║╚╣╔╗╚╝║░░░░║╚══╣╚═╝║╚═╝║╚══╗░░░░░||  \n");
-    printf("  ||░░░░░║║░║║░║║░║║╚╗║║╔══╗║╔══╣╔╗╔╣╔╗╔╣╔══╝░░░░░||  \n");
-    printf("  ||░░░░░║╚═╝║░║║░║║░║║║╚══╝║║░░║║║╚╣║║╚╣╚══╗░░░░░||  \n");
-    printf("  ||░░░░░╚═══╝░╚╝░╚╝░╚═╝░░░░╚╝░░╚╝╚═╩╝╚═╩═══╝░░░░░||  \n");
-    printf("  ||░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░||  \n");
-    printf("  ||░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░||  \n");
-    printf("  ██==============================================██  \n");
+    limpiarPantalla();
+    printf("  +===============================================+\n");
+    printf("  |                                               |\n");
+    printf("  |                                               |\n");
+    printf("  |   _  _ _____ _  _    _____ ___  ___  ___      |\n");
+    printf("  |  | || |_   _| \\| |  |  ___| _ \\| _ \\| __|     |\n");
+    printf("  |  | || | | | | .` |  |  _| |   /|   /| _|      |\n");
+    printf("  |  | || | | | | |\\ |  | |   | |_\\| |_\\| |___    |\n");
+    printf("  |   \\__/  |_| |_|\\_|  |_|   |_|\\_\\|_|\\_\\____|   |\n");
+    printf("  |                                               |\n");
+    printf("  |                                               |\n");
+    printf("  +===============================================+\n");
     printf("\n          >> PRESIONA ENTER PARA INGRESAR <<          \n");
 }
 
@@ -85,7 +83,7 @@ void logo_utn_animado(void) {
         }
     }
 
-    limpiar_pantalla();
+    limpiarPantalla();
     printf("\n<< Cargando el programon Artemis... >>\n");
     SLEEP_MS(1000);
 }
@@ -108,7 +106,7 @@ void mostrar_outro(void) {
     printf("\n");
     printf("  ===============================================================\n");
     printf("   [+] Maniobra completada. Cerrando telemetria de la Orion...\n");
-    printf("   [+] Gracias por utilizar el Simulador Artemis II \n");
+    printf("   [+] Gracias por utilizar el Simulador Artemis II (Escenario 2).\n");
     printf("   [+] ¡Hasta la proxima mision!\n");
     printf("  ===============================================================\n\n");
 }
