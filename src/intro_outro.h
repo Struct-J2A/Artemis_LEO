@@ -5,10 +5,10 @@
 // Muestra el logo animado de la UTN FRRE
 void logo_utn_animado(void);
 
-// Muestra el banner principal de Artemis
+// Muestra el banner principal de la mision Artemis
 void mostrar_intro(void);
 
-// Muestra el mensaje de despedida
+// Muestra el mensaje de despedida al salir de la simulacion
 void mostrar_outro(void);
 
 #endif
