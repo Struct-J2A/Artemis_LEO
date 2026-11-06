@@ -6,9 +6,12 @@
 void logo_utn_animado(void);
 
 // Muestra el banner principal de la mision Artemis
-void mostrar_intro(void);
+void logo_artemis_intro(void);
 
 // Muestra el mensaje de despedida al salir de la simulacion
 void mostrar_outro(void);
+
+//araña UTN con nombre
+void frre_arania_nombre(void);
 
 #endif
