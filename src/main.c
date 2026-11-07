@@ -83,6 +83,9 @@ int main(void) {
             case 4:
                 limpiarPantalla();
                 mostrar_outro();
+
+                mostrar_postcreditos();
+                
                 break;
         }
 

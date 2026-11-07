@@ -344,3 +344,112 @@ cls
 ▐  ▐   ▌  ▌▄▀  ▀▄ ▄▀   █   ▐    ▌   ▄▀        ▐ █    ▀▄  █    █▄▀  ░▓█▄ ▐▌      ▄▄▀          ▌        ▐▄▀        ▐  ▀▄     ▄▀  
 ▀▀▀▀   ▀▀▀▀▀▀▀▀▀▀  ▀▀▀▀    ▀▀▀▀▀     ▀▀▀▀▀▀▀▀▀▀  ▀▀▀▀▀    ▀▀▀▀  ▀▀▀▀▀▀   ▀▀▀▀▀▀▀            ▀▀▀▀▀▀▀▀▀▀▀ ▀▀▀▀▀▀▀▀▀▀    ▀▀▀▀▀    
 */
+
+
+/* Dibuja una linea desplazada hacia la derecha. */
+static void linea_nave(int desplazamiento, const char *texto) {
+    printf("%*s%s\n", desplazamiento, "", texto);
+}
+
+/* Animacion final y creditos del equipo. */
+void mostrar_postcreditos(void) {
+    const char *integrantes[] = {
+        "Jose Marin",
+        "Jose Pastori",
+        "Guido Burgos"
+    };
+
+    limpiarPantalla();
+
+    printf("\n\n");
+    printf("          ARTEMIS LEO - CREDITOS\n");
+    printf("          =====================\n\n");
+    printf("              DESARROLLADO POR\n\n");
+    fflush(stdout);
+
+    /* Los nombres aparecen uno por uno. */
+    for (int i = 0; i < 3; i++) {
+        printf("              %s\n\n", integrantes[i]);
+        fflush(stdout);
+        SLEEP_MS(800);
+    }
+
+    SLEEP_MS(1500);
+
+    /* La nave cruza la pantalla de izquierda a derecha. */
+    for (int posicion = 0; posicion <= 40; posicion += 2) {
+        limpiarPantalla();
+
+        printf("\n     *                  .                *\n");
+        printf("              .                 *\n");
+        printf("\n          ORION: INICIANDO RETIRADA...\n\n");
+
+        linea_nave(posicion, "          /\\");
+        linea_nave(posicion, "     ____/  \\____");
+        linea_nave(posicion, "<<< |    ORION   >");
+        linea_nave(posicion, "     ----\\  /----");
+        linea_nave(posicion, "          \\/");
+
+        printf("\n\n       .                     *          .\n");
+
+        fflush(stdout);
+        SLEEP_MS(100);
+    }
+
+    /* Breve pausa antes de la explosion. */
+    printf("\n          HOUSTON... TENEMOS UN PROBLEMA.\n");
+    fflush(stdout);
+    SLEEP_MS(1300);
+
+    /* Explosion que aumenta de tamano. */
+    for (int cuadro = 0; cuadro < 3; cuadro++) {
+        limpiarPantalla();
+        printf("\n\n\n");
+
+        if (cuadro == 0) {
+            printf("                         \\ | /\n");
+            printf("                          ***\n");
+            printf("                         / | \\\n");
+        } else if (cuadro == 1) {
+            printf("                       \\  |  /\n");
+            printf("                     -- ***** --\n");
+            printf("                       *******\n");
+            printf("                     -- ***** --\n");
+            printf("                       /  |  \\\n");
+        } else {
+            printf("                   *      |      *\n");
+            printf("                      \\   |   /\n");
+            printf("                 * -- ********* -- *\n");
+            printf("                     *** BOOM ***\n");
+            printf("                 * -- ********* -- *\n");
+            printf("                      /   |   \\\n");
+            printf("                   *      |      *\n");
+        }
+
+        fflush(stdout);
+        SLEEP_MS(450);
+    }
+
+    SLEEP_MS(700);
+    limpiarPantalla();
+
+    printf("\n\n");
+    printf("       ==========================================\n");
+    printf("                     ¡GRACIAS!\n");
+    printf("       ==========================================\n\n");
+
+    printf("           Por acompanarnos en esta mision.\n\n");
+
+    for (int i = 0; i < 3; i++) {
+        printf("                  %s\n", integrantes[i]);
+    }
+
+    printf("\n");
+    printf("           UTN FRRe - Ingenieria en Sistemas\n");
+    printf("           Algoritmos y Estructuras de Datos\n\n");
+
+    printf("       La fisica salio bien. El estacionamiento no.\n\n");
+    printf("       [Escena ficticia: no afecta la simulacion]\n\n");
+
+    fflush(stdout);
+}
