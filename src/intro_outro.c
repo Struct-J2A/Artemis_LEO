@@ -228,17 +228,48 @@ void marco_general(void) {  // 66 columnas libres - 20 filas libres
 static int esperar_con_deteccion(double segundos) {
     int pasos = (int)(segundos / 0.05);
 
+    fflush(stdout);
+
     for (int i = 0; i < pasos; i++) {
 #ifdef _WIN32
         if (_kbhit()) {
             char tecla = _getch();
+
             if (tecla == '\r' || tecla == '\n') {
+                return 1;
+            }
+        }
+#else
+        fd_set entrada;
+        struct timeval espera = {0, 0};
+
+        FD_ZERO(&entrada);
+        FD_SET(STDIN_FILENO, &entrada);
+
+        int disponible = select(
+            STDIN_FILENO + 1,
+            &entrada,
+            NULL,
+            NULL,
+            &espera
+        );
+
+        if (disponible > 0) {
+            char tecla;
+            ssize_t leidos = read(STDIN_FILENO, &tecla, 1);
+
+            if (leidos == 0) {
+                return 1;
+            }
+
+            if (leidos > 0 && (tecla == '\n' || tecla == '\r')) {
                 return 1;
             }
         }
 #endif
         SLEEP_MS(50);
     }
+
     return 0;
 }
 
