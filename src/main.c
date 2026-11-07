@@ -95,12 +95,12 @@ int main(void) {
 Guia de compilacion actualizada para el equipo:
 
 compilacion en LINUX:
-gcc src/main.c src/artemis.c src/funcion_global.c src/intro_outro.c src/validaciones.c -o bin\lin\executor -lm && .\bin\lin\executor
+gcc src/main.c src/artemis.c src/funcion_global.c src/intro_outro.c src/validaciones.c -o bin/lin\executor -lm && ./bin/lin/executor
 
 compilacion en WINDOWS:
 gcc src/main.c src/artemis.c src/funcion_global.c src/intro_outro.c src/validaciones.c -o bin\win\executor.exe -lm ; .\bin\win\executor.exe
 
 compilacion en MAC:
-clang src/main.c src/artemis.c src/funcion_global.c src/intro_outro.c src/validaciones.c -o bin\mac\executor -lm && .\bin\mac\executor
-
+clang src/main.c src/artemis.c src/funcion_global.c src/intro_outro.c src/validaciones.c -o bin/mac/executor -lm && ./bin/mac/executor
 */
+

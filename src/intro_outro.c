@@ -11,6 +11,8 @@
     #define SLEEP_MS(ms) Sleep(ms)
 #else
     #include <unistd.h>
+    #include <sys/select.h>
+
     #define SLEEP_MS(ms) usleep((ms) * 1000)
 #endif
 
@@ -223,15 +225,15 @@ void marco_general(void) {  // 66 columnas libres - 20 filas libres
     printf("\n");
 }
 
-// Revisa cada 50ms si se presionó la tecla Enter ('\r' o '\n')
 static int esperar_con_deteccion(double segundos) {
     int pasos = (int)(segundos / 0.05);
+
     for (int i = 0; i < pasos; i++) {
 #ifdef _WIN32
         if (_kbhit()) {
             char tecla = _getch();
             if (tecla == '\r' || tecla == '\n') {
-                return 1; // Bandera para interrumpir la animación
+                return 1;
             }
         }
 #endif
