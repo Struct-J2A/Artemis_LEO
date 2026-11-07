@@ -225,13 +225,15 @@ void marco_general(void) {  // 66 columnas libres - 20 filas libres
     printf("\n");
 }
 
+
+//deteccion de ENTER
 static int esperar_con_deteccion(double segundos) {
     int pasos = (int)(segundos / 0.05);
 
     fflush(stdout);
 
     for (int i = 0; i < pasos; i++) {
-#ifdef _WIN32
+    #ifdef _WIN32
         if (_kbhit()) {
             char tecla = _getch();
 
@@ -239,13 +241,11 @@ static int esperar_con_deteccion(double segundos) {
                 return 1;
             }
         }
-#else
+    #else
         fd_set entrada;
         struct timeval espera = {0, 0};
-
         FD_ZERO(&entrada);
         FD_SET(STDIN_FILENO, &entrada);
-
         int disponible = select(
             STDIN_FILENO + 1,
             &entrada,
@@ -257,16 +257,14 @@ static int esperar_con_deteccion(double segundos) {
         if (disponible > 0) {
             char tecla;
             ssize_t leidos = read(STDIN_FILENO, &tecla, 1);
-
             if (leidos == 0) {
                 return 1;
             }
-
             if (leidos > 0 && (tecla == '\n' || tecla == '\r')) {
                 return 1;
             }
         }
-#endif
+    #endif
         SLEEP_MS(50);
     }
 
@@ -296,54 +294,6 @@ void logo_utn_animado(void) {
     SLEEP_MS(1000);
 }
 
-/* // MAIN DE PRUEBAS
-int main() {
-    //funciones de generacion general:
-    configurar_terminal();
-
-    //inicio de programa
-    logo_utn_animado();
-    // marco_general();
-    // logo_utn_arania_C();
-    // logo_utn_nombre_C();
-    // logo_artemis_intro();
-    // mostrar_outro();
-    // frre_arania_nombre();
-    return 0;
-} */
-
-/* 
-gcc src/intro_outro.c src/funcion_global.c -o bin/win/intro_outro.exe -lm ; .\bin\win\intro_outro.exe
-
-cls
-"D:\GoogleDrive\_Universidad\UTN-2026\AED 2026\Laboratorio_C\TFI_LabC_Artemis\Artemis_LEO\bin\win\intro_outro.exe"
-
-*/
-
-//ⒶⓇⓉⒺⓂⒾⓈ ~ ⓁⒺⓄ
-
-/**
- *    ┏━┓┏━┓╺┳╸┏━╸┏┳┓╻┏━┓         ╻  ┏━╸┏━┓
- *    ┣━┫┣┳┛ ┃ ┣╸ ┃┃┃┃┗━┓   ┏━┛   ┃  ┣╸ ┃ ┃
- *    ╹ ╹╹┗╸ ╹ ┗━╸╹ ╹╹┗━┛         ┗━╸┗━╸┗━┛
- */
-
-/**
- *    ╭─╮╭─╮╶┬╴╭─╴╭┬╮╷╭─╮         ╷  ╭─╴╭─╮
- *    ├─┤├┬╯ │ ├╴ ││││╰─╮   ╭─╯   │  ├╴ │ │
- *    ╵ ╵╵╰╴ ╵ ╰─╴╵ ╵╵╰─╯         ╰─╴╰─╴╰─╯
- */
-/*
-     ▄▄▄     ▄▄▄▄▄▄▄▄    ▄▄▄▄▄▄▄▄▄▄▄▄ ▄▄▄▄▄▄▄▄▄▄ ▄▄▄▄▄      ▄▄▄  ▄▄▄▄▄▄▄   ▄▄▄▄▄▄▄▄            ▄▄▄▄▄     ▄▄▄▄▄▄▄▄▄▄    ▄▄▄▄▄    
-  ▄▀█▓▓░▄  ▌░▒▒▒▓▓▓█░▄  ▌ ░░▒▒▒▒▓▓█▌▀▄░▒▒▒▓▓▓█▓▀▄░▒▒▒█   ▄▒▒░░▀▀▄░▒▒▒▓█▀▄▀░▒▒▓▓█▓▒█▄        ▄▀░▒█▒▀    ▀▄░▒▒▒▓▓▓█▓  ▄▀░▒▒▒░░▄  
-  ▌▓▒▀▒▒░  ▐▐░▒░▀▀▀▐▓░▌ ▀▀▀▀▌░▒▐▀▀▀   ▐░▒░▀▀▀▒█  ▐░▒▓▒▄▄▀░▓░░▌   ▐░▒░█  ▌░░░▀▀▀▀▀█▀          █▒▓▓▌       ▐░▒░▀▀▀▒█ ▐░░░▀▀▀░░░▌ 
- ▐▒▒▌ ▐░▒▌  ▐▓ ▐▌ ▄▀▄▀      ▌ ░▐      ▐▓ ▐▄▄▄    ▐▓ ▐██▒█▓░▓█    ▐▓ ▓▌  ▐   ▀▀▀▀▄            ▐ ▒▒▌       ▐▓ ▐▄▄▄   ▌▓ ▌   ▐ ▓▐ 
- ▐█▓▀▀▀▓█▌  ▌▒▓▓▀▀░▀▄       ▌▓ ▐      ▌▒▓▓▒░▌    ▌▒▓█▌▀▄▀█▓░▐▌   ▌▒▓▓▌   ▀▄▄▄█▓▓▒▀▄          ▐░▒▓▌       ▌▒▓▓▒░▌  ▐▓▒▐     ▌▒▓▌
- ▌▓▒▄▄▄▒▓▐  ▌░ ▐▀▀▄▓▒█      ▌ ▓▐      ▌░ ▐▀▀     ▌░ █    █░▓░█   ▌░ ▐▌  ▄▄▄▄ ▀▌▒░░▐▌         ▐ ░░▌   ▄   ▌░ ▐▀▀    ▐▒░▌   ▐░▒▐ 
- ▌░ ▌ ▐ ░▐  ▌  █   █░ █     ▌ ▒▐      ▌  ▀▄▄▄▀█ ▐▌  ▐▌   ▐▌░ ▐▌  ▌   █  ▐  ▀▄▄▀ ░ █▌         ▐   ▀▀▀▀ ▌  ▌  ▀▄▄▄▀█ ▐░░▀▄▄▄▀░░▌ 
-▐  ▐   ▌  ▌▄▀  ▀▄ ▄▀   █   ▐    ▌   ▄▀        ▐ █    ▀▄  █    █▄▀  ░▓█▄ ▐▌      ▄▄▀          ▌        ▐▄▀        ▐  ▀▄     ▄▀  
-▀▀▀▀   ▀▀▀▀▀▀▀▀▀▀  ▀▀▀▀    ▀▀▀▀▀     ▀▀▀▀▀▀▀▀▀▀  ▀▀▀▀▀    ▀▀▀▀  ▀▀▀▀▀▀   ▀▀▀▀▀▀▀            ▀▀▀▀▀▀▀▀▀▀▀ ▀▀▀▀▀▀▀▀▀▀    ▀▀▀▀▀    
-*/
 
 
 /* Dibuja una linea desplazada hacia la derecha. */
@@ -453,3 +403,52 @@ void mostrar_postcreditos(void) {
 
     fflush(stdout);
 }
+
+/* // MAIN DE PRUEBAS
+int main() {
+    //funciones de generacion general:
+    configurar_terminal();
+
+    //inicio de programa
+    logo_utn_animado();
+    // marco_general();
+    // logo_utn_arania_C();
+    // logo_utn_nombre_C();
+    // logo_artemis_intro();
+    // mostrar_outro();
+    // frre_arania_nombre();
+    return 0;
+} */
+
+/* 
+gcc src/intro_outro.c src/funcion_global.c -o bin/win/intro_outro.exe -lm ; .\bin\win\intro_outro.exe
+
+cls
+"D:\GoogleDrive\_Universidad\UTN-2026\AED 2026\Laboratorio_C\TFI_LabC_Artemis\Artemis_LEO\bin\win\intro_outro.exe"
+
+*/
+
+//ⒶⓇⓉⒺⓂⒾⓈ ~ ⓁⒺⓄ
+
+/**
+ *    ┏━┓┏━┓╺┳╸┏━╸┏┳┓╻┏━┓         ╻  ┏━╸┏━┓
+ *    ┣━┫┣┳┛ ┃ ┣╸ ┃┃┃┃┗━┓   ┏━┛   ┃  ┣╸ ┃ ┃
+ *    ╹ ╹╹┗╸ ╹ ┗━╸╹ ╹╹┗━┛         ┗━╸┗━╸┗━┛
+ */
+
+/**
+ *    ╭─╮╭─╮╶┬╴╭─╴╭┬╮╷╭─╮         ╷  ╭─╴╭─╮
+ *    ├─┤├┬╯ │ ├╴ ││││╰─╮   ╭─╯   │  ├╴ │ │
+ *    ╵ ╵╵╰╴ ╵ ╰─╴╵ ╵╵╰─╯         ╰─╴╰─╴╰─╯
+ */
+/*
+     ▄▄▄     ▄▄▄▄▄▄▄▄    ▄▄▄▄▄▄▄▄▄▄▄▄ ▄▄▄▄▄▄▄▄▄▄ ▄▄▄▄▄      ▄▄▄  ▄▄▄▄▄▄▄   ▄▄▄▄▄▄▄▄            ▄▄▄▄▄     ▄▄▄▄▄▄▄▄▄▄    ▄▄▄▄▄    
+  ▄▀█▓▓░▄  ▌░▒▒▒▓▓▓█░▄  ▌ ░░▒▒▒▒▓▓█▌▀▄░▒▒▒▓▓▓█▓▀▄░▒▒▒█   ▄▒▒░░▀▀▄░▒▒▒▓█▀▄▀░▒▒▓▓█▓▒█▄        ▄▀░▒█▒▀    ▀▄░▒▒▒▓▓▓█▓  ▄▀░▒▒▒░░▄  
+  ▌▓▒▀▒▒░  ▐▐░▒░▀▀▀▐▓░▌ ▀▀▀▀▌░▒▐▀▀▀   ▐░▒░▀▀▀▒█  ▐░▒▓▒▄▄▀░▓░░▌   ▐░▒░█  ▌░░░▀▀▀▀▀█▀          █▒▓▓▌       ▐░▒░▀▀▀▒█ ▐░░░▀▀▀░░░▌ 
+ ▐▒▒▌ ▐░▒▌  ▐▓ ▐▌ ▄▀▄▀      ▌ ░▐      ▐▓ ▐▄▄▄    ▐▓ ▐██▒█▓░▓█    ▐▓ ▓▌  ▐   ▀▀▀▀▄            ▐ ▒▒▌       ▐▓ ▐▄▄▄   ▌▓ ▌   ▐ ▓▐ 
+ ▐█▓▀▀▀▓█▌  ▌▒▓▓▀▀░▀▄       ▌▓ ▐      ▌▒▓▓▒░▌    ▌▒▓█▌▀▄▀█▓░▐▌   ▌▒▓▓▌   ▀▄▄▄█▓▓▒▀▄          ▐░▒▓▌       ▌▒▓▓▒░▌  ▐▓▒▐     ▌▒▓▌
+ ▌▓▒▄▄▄▒▓▐  ▌░ ▐▀▀▄▓▒█      ▌ ▓▐      ▌░ ▐▀▀     ▌░ █    █░▓░█   ▌░ ▐▌  ▄▄▄▄ ▀▌▒░░▐▌         ▐ ░░▌   ▄   ▌░ ▐▀▀    ▐▒░▌   ▐░▒▐ 
+ ▌░ ▌ ▐ ░▐  ▌  █   █░ █     ▌ ▒▐      ▌  ▀▄▄▄▀█ ▐▌  ▐▌   ▐▌░ ▐▌  ▌   █  ▐  ▀▄▄▀ ░ █▌         ▐   ▀▀▀▀ ▌  ▌  ▀▄▄▄▀█ ▐░░▀▄▄▄▀░░▌ 
+▐  ▐   ▌  ▌▄▀  ▀▄ ▄▀   █   ▐    ▌   ▄▀        ▐ █    ▀▄  █    █▄▀  ░▓█▄ ▐▌      ▄▄▀          ▌        ▐▄▀        ▐  ▀▄     ▄▀  
+▀▀▀▀   ▀▀▀▀▀▀▀▀▀▀  ▀▀▀▀    ▀▀▀▀▀     ▀▀▀▀▀▀▀▀▀▀  ▀▀▀▀▀    ▀▀▀▀  ▀▀▀▀▀▀   ▀▀▀▀▀▀▀            ▀▀▀▀▀▀▀▀▀▀▀ ▀▀▀▀▀▀▀▀▀▀    ▀▀▀▀▀    
+*/

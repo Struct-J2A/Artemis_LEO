@@ -37,19 +37,19 @@ int main(void) {
         opcion = leer_entero("\nSeleccione una opcion (1-4): ", 1, 4);
 
         switch (opcion) {
-            case 1:
+            case 1:{
                 limpiarPantalla();
                 inicializar_nave(&orion, ALTITUD_NOMINAL, MASA_NOMINAL);
                 mostrar_reporte_completo(&orion);
                 printf("\nPresione ENTER para volver al menu...");
                 limpiar_buffer();
                 break;
+            }
 
             case 2: {
                 limpiarPantalla();
                 printf("\n--- SIMULACION DE ALTITUD PERSONALIZADA ---\n");
                 double nueva_altitud = leer_double("Ingrese altitud deseada en km (100.0 a 2000.0): ", 100.0, 2000.0);
-                
                 inicializar_nave(&orion, nueva_altitud, MASA_NOMINAL);
                 mostrar_reporte_completo(&orion);
                 printf("\nPresione ENTER para volver al menu...");
@@ -61,12 +61,9 @@ int main(void) {
                 limpiarPantalla();
                 printf("\n--- INCISO D: DESVIACION POR IMPULSO LATERAL ---\n");
                 printf("Valores teoricos: a = 0.50 m/s^2 | dt = 10.0 s\n\n");
-                
                 double a_lat = leer_double("Ingrese aceleracion lateral en m/s^2 (0.01 a 10.0): ", 0.01, 10.0);
                 double t_lat = leer_double("Ingrese tiempo de encendido en segundos (0.1 a 120.0): ", 0.1, 120.0);
-                
                 double desviacion = calcular_desviacion_impulso(a_lat, t_lat);
-                
                 printf("\n=======================================================\n");
                 printf("           RESULTADO DE LA MANIOBRA LATERAL            \n");
                 printf("=======================================================\n");
@@ -74,23 +71,20 @@ int main(void) {
                 printf(" Tiempo de encendido (dt):    %.2f s\n", t_lat);
                 printf(" Desviacion lateral instantanea (dy): %.2f metros\n", desviacion);
                 printf("=======================================================\n");
-                
                 printf("\nPresione ENTER para volver al menu...");
                 limpiar_buffer();
                 break;
             }
 
-            case 4:
+            case 4:{
                 limpiarPantalla();
                 mostrar_outro();
-
                 mostrar_postcreditos();
-                
                 break;
+            }
         }
 
     } while (opcion != 4);
-
     return 0;
 }
 
