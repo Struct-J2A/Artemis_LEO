@@ -357,15 +357,19 @@ void mostrar_postcreditos(void) {
         printf("\n\n\n");
 
         if (cuadro == 0) {
+            printf("\n\n");
             printf("                         \\ | /\n");
             printf("                          ***\n");
             printf("                         / | \\\n");
+            printf("\n\n");
         } else if (cuadro == 1) {
+            printf("\n");
             printf("                       \\  |  /\n");
             printf("                     -- ***** --\n");
             printf("                       *******\n");
             printf("                     -- ***** --\n");
             printf("                       /  |  \\\n");
+            printf("\n");
         } else {
             printf("                   *      |      *\n");
             printf("                      \\   |   /\n");
@@ -388,7 +392,7 @@ void mostrar_postcreditos(void) {
     printf("                     ¡GRACIAS!\n");
     printf("       ==========================================\n\n");
 
-    printf("           Por acompanarnos en esta mision.\n\n");
+    printf("           Por acompañarnos en esta mision.\n\n");
 
     for (int i = 0; i < 3; i++) {
         printf("                  %s\n", integrantes[i]);
